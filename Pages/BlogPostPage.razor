@@ -1,0 +1,24 @@
+﻿@page "/blog"
+
+@using global::Blog.Core.Entities
+@using global::Blog.Core.Services
+@inject BlogService BlogService
+@code {
+    private List<BlogPost> posts;
+    protected override async Task OnInitializedAsync()
+    {
+        posts = await BlogService.GetPostsAsync();
+    }
+}
+
+<h3>Blog</h3>
+<div class="blog-posts">
+    @foreach (var post in posts)
+    {
+        <div class="post">
+            <h2>@post.Title</h2>
+            <p>@post.Date.ToString("MMMM dd, yyyy")</p>
+            <div>@((MarkupString)post.Content)</div>
+        </div>
+    }
+</div>
