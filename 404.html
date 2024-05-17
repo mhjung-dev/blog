@@ -6,9 +6,8 @@
         // Redirect to the app's root path
         const basePath = window.location.hostname === 'localhost' ? '/' : '/blog';
         const path = window.location.pathname.replace(basePath, '');
-        const search = window.location.search;
-        const hash = window.location.hash;
-        window.location.replace(basePath + path + search + hash);
+        var newUrl = baseUrl + "/index.html" + path + window.location.search + window.location.hash;
+        window.location.replace(newUrl);
     </script>
 </head>
 <body>
