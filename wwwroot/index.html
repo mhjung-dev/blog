@@ -12,8 +12,11 @@
     <link href="css/styles.css" rel="stylesheet">
     <script>
         const base = document.getElementsByTagName('base')[0];
-        const pathnameArr = window.location.pathname.split('/');
-        base.href = pathnameArr[1] === '' ? '/' : '/' + window.location.pathname.split('/')[1] + '/';
+        if (window.location.hostname === 'localhost') {
+            base.href = '/'
+        } else {
+            base.href = '/blog/'
+        }
     </script>
 </head>
 
