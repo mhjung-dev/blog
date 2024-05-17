@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="0; url=/" />
+    <script type="text/javascript">
+        // Redirect to the app's root path
+        const basePath = window.location.hostname === 'localhost' ? '/' : '/blog';
+        const path = window.location.pathname.replace(basePath, '');
+        const search = window.location.search;
+        const hash = window.location.hash;
+        window.location.replace(basePath + path + search + hash);
+    </script>
+</head>
+<body>
+</body>
+</html>
