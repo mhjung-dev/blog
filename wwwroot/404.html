@@ -4,10 +4,16 @@
     <meta http-equiv="refresh" content="0; url=/" />
     <script type="text/javascript">
         // Redirect to the app's root path
-        const basePath = window.location.hostname === 'localhost' ? '/' : '/blog';
-        const path = window.location.pathname.replace(basePath, '');
-        var newUrl = baseUrl + "/index.html" + path + window.location.search + window.location.hash;
-        window.location.replace(newUrl);
+        var pathSegmentsToKeep = 1;
+
+        var l = window.location;
+        l.replace(
+            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+            l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+            l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+            (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+            l.hash
+        );
     </script>
 </head>
 <body>
